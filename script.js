@@ -25,10 +25,17 @@ const loader = new GLTFLoader();
 
 // Load Grass
 loader.load('./models/Grass02.glb', (gltf) => {
-    const grass = gltf.scene;
-    grass.position.set(0, 0, 0);
-    scene.add(grass);
-}, undefined, (err) => console.error("Grass error", err));
+    // Create a 10x10 grid of grass
+    for (let x = -5; x < 5; x++) {
+        for (let z = -5; z < 5; z++) {
+            const grass = gltf.scene.clone(); // Clone the model
+            grass.position.set(x * 2, 0, z * 2); // Space them out by 2 units
+            grass.scale.set(0.5, 0.5, 0.5); // Adjust size
+            scene.add(grass);
+        }
+    }
+}, undefined, (err) => console.error("Error loading grass", err));
+
 
 // Load Flowers
 loader.load('./models/Flower_02_a_Art.glb', (gltf) => {

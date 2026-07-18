@@ -7,3 +7,19 @@ body { margin: 0; overflow: hidden; background: #000; }
     transform: translate(-50%, -50%);
     pointer-events: none;
 }
+
+/* Force landscape mode */
+body, html {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: #87ceeb;
+}
+
+canvas {
+    display: block;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+

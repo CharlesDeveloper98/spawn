@@ -27,22 +27,16 @@ camera.position.y = 1.7; // Human eye height
 
 
 
-const loader = new GLTFLoader();
+// Replace your existing loader block with this to test visibility:
+const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.3);
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const weaponPlaceholder = new THREE.Mesh(geometry, material);
 
-// Load your weapon model (replace with your own .glb file path)
-loader.load('path/to/your/weapon.glb', (gltf) => {
-    const weapon = gltf.scene;
-    
-    // Position the weapon in front of the camera
-    weapon.position.set(0.2, -0.2, -0.5); 
-    weapon.scale.set(0.1, 0.1, 0.1);
-    
-    // Parent the weapon to the camera so it moves with the player
-    camera.add(weapon);
-});
+// Position it relative to the camera
+weaponPlaceholder.position.set(0.2, -0.2, -0.5); 
 
-// Important: Ensure the camera is added to the scene
-scene.add(camera);
+// Add to camera
+camera.add(weaponPlaceholder);
 
 
 
